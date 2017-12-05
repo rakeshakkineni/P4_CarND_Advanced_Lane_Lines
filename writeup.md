@@ -19,10 +19,11 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/undistorted_images/calibration11.jpg "Undistorted"
 [image2]: ./camera_cal/calibration2.jpg "Original Image"
-[image3]: ./output_images/binary_combo_example.jpg "Binary Example"
-[image4]: ./output_images/warped_straight_lines.jpg "Warp Example"
-[image5]: ./output_images/color_fit_lines.jpg "Fit Visual"
-[image6]: ./output_images/example_output.jpg "Output"
+[image3]: ./test_images/test5.jpg "Test Image"
+[image4]: ./output_images/undistorted_images/test6.jpg "Undistorted"
+[image5]: ./output_images/threshold_images/test6.jpg "Thresholded Image"
+[image6]: ./output_images/perspective_images/test6.jpg "Perspective Transform"
+[image7]: ./output_images/output/test6.jpg "Final Output"
 [video1]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -41,24 +42,28 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
-
-<tr>
-    <td> <img src="./camera_cal/calibration2.jpg" alt="Original" style="width: 250px;"/> </td>
-    <td> <img src="./output_images/undistorted_images/calibration11.jpg " alt="UnDistorted" style="width: 250px;"/> </td>
-</tr>
+Original | UnDistorted
+:--------:|:------------:
+![alt text][image2] | ![alt text][image1]
 
 ### Pipeline (single images)
 
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+
+Original | UnDistorted
+:--------:|:------------:
+![alt text][image3] | ![alt text][image4]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 I used a combination of color and gradient thresholds to generate a binary image , code for thresholding is implemented under function 'threshold' defined in cell 4 of "./P4_Advanced_Lane_Lines.ipynb". To generate binary file i have ored Hue , Saturation Binaries anded them with X Gradient Binary. My focus was on achieving maximum lane detection even under tree shadow. For generating Hue Binary i have used X Gradient threshold. Here's an example of my output for this step.  
 
-![alt text][image3]
+Original | Thresholded
+:--------:|:------------:
+![alt text][image3] | ![alt text][image5]
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -80,7 +85,9 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+Original | Perspective Transformed
+:--------:|:------------:
+![alt text][image3] | ![alt text][image6]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -90,7 +97,9 @@ To draw the lane lines i have implemented the code in another function called 'd
 
 Following image shows the behavior of this function. 
 
-![alt text][image5]
+Original | Finale Output
+:--------:|:------------:
+![alt text][image3] | ![alt text][image7]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
@@ -100,7 +109,9 @@ To calculate the radius of curvature the function "cal_radius_curvature()" was i
 
 To draw the lane lines i have implemented the code in another function called 'draw_lines' which is in 8th code of "./P4_Advanced_Lane_Lines.ipynb". This function shall highlight the left and right lanes in red , blue colors respectively and the area in between the lanes is filled with green. Most of the code for this function implementation was taken from UDACITY course. The lane lines are drawn on unwarpped image and the output is added to the original image. To unwarp Inverse Perspective Transform matrix from Perspecive Transform is used. Here is an example of my result on a test image:
 
-![alt text][image6]
+Original | Finale Output
+:--------:|:------------:
+![alt text][image3] | ![alt text][image7]
 
 ---
 
