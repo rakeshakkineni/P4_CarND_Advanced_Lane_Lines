@@ -97,7 +97,7 @@ To draw the lane lines i have implemented the code in another function called 'd
 
 Following image shows the behavior of this function. 
 
-Original | Finale Output
+Original | Final Output
 :--------:|:------------:
 ![alt text][image3] | ![alt text][image7]
 
@@ -109,7 +109,7 @@ To calculate the radius of curvature the function "cal_radius_curvature()" was i
 
 To draw the lane lines i have implemented the code in another function called 'draw_lines' which is in 8th code of "./P4_Advanced_Lane_Lines.ipynb". This function shall highlight the left and right lanes in red , blue colors respectively and the area in between the lanes is filled with green. Most of the code for this function implementation was taken from UDACITY course. The lane lines are drawn on unwarpped image and the output is added to the original image. To unwarp Inverse Perspective Transform matrix from Perspecive Transform is used. Here is an example of my result on a test image:
 
-Original | Finale Output
+Original | Final Output
 :--------:|:------------:
 ![alt text][image3] | ![alt text][image7]
 
